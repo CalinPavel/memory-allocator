@@ -1,0 +1,27 @@
+---      SISTEME DE OPERARE     ---
+  
+  Tema #2 Memory Allocator
+  
+  331 CC - Pavel Calin Gabriel 
+
+In implemenatre am folosit o lista simplu inlantuita pentru alocarea memoriei cu sbrk.
+Toate operatiile de adaugare , marcare ca zona libera , split folosesc aceasta lista.
+Pentru ca un block sa suporte operatia de split acesta trebuie sa aiba destul loc pentru
+memoria ceruta , 1 octet si pentru structul din lista.
+
+void coalesce() - uneste block-urile free alocate cu brk
+
+struct block_meta *get_free_block(size_t size) - returenaza block-ul free cu diferenta
+cea mai mica dintre memoria necesara si memoria block-ului free
+
+void *split_block(struct block_meta* check ,size_t size) - returneaza adresa block-ului
+ocupat dupa realizarea operatiei de split
+
+void *add_mmamp_node(size_t size) - alocam noua zona de memorie cu mmap si returneaza
+adresa sa
+
+void *add_head_node(size_t size) - adauga o noua zona de memorie in captul zonei alocate
+cu sbrk
+
+
+Timp alocat:20h
